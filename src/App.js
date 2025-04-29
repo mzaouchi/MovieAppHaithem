@@ -2,6 +2,8 @@ import { useState } from 'react';
 import './App.css';
 import NavMovie from './Components/NavMovie';
 import ListMovies from './Components/ListMovies';
+import AddMovie from './Components/AddMovie';
+import FilterMovie from './Components/FilterMovie';
 
 function App() {
   const [movies, setMovies] = useState([
@@ -11,10 +13,15 @@ function App() {
     {title : 'A Peine J’ouvre Les Yeux', description :'Tunis, été 2010, quelques mois avant la Révolution, Farah 18 ans passe son bac et sa famille l’imagine déjà médecin… mais elle ne voit pas les choses de la même manière. Elle chante au sein d¹un groupe de rock engagé. Elle vibre, s’enivre, découvre l’amour et sa ville de nuit contre la volonté d’Hayet, sa mère, qui connaît la Tunisie et ses interdits.',posterURL:'https://pictures.artify.tn/media/r07wsehw43shedjuick2.jpg?width=200',rating : 2, id : Math.random()},
 
   ])
+  // const handleAddddddMovie=(filmelimechnzidouh)=>  setMovies([...movies,filmelimechnzidouh])
+  const [titre ,setTitre] = useState('')
+  const [njoum,setNjoum] = useState(0)
   return (
    <div>
       <NavMovie/>
-      <ListMovies movies={movies}/>
+      <FilterMovie setTitre={setTitre} setNjoum={setNjoum} titre={titre} njoum={njoum}/>
+      <AddMovie movies={movies} setMovies={setMovies} />
+      <ListMovies movies={movies} titre={titre} njoum={njoum}/>
    </div>
   );
 }
